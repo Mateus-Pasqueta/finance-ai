@@ -163,7 +163,7 @@ const UpsertTransactionDialog = ({
             />
             <FormField
               control={form.control}
-              name="Type"
+              name="type"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Tipo</FormLabel>
