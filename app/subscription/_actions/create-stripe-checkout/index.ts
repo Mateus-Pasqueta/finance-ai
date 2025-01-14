@@ -23,7 +23,7 @@ export const createStripeCheckout = async () => {
     cancel_url: "http://localhost:3000",
     subscription_data: {
       metadata: {
-        clerk_User_Id: userId,
+        clerk_user_id: userId,
       },
     },
     line_items: [
