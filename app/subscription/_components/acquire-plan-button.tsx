@@ -39,9 +39,8 @@ const AcquirePlanButton = () => {
       className="w-full rounded-full font-bold"
       onClick={handleAcquirePlanClick}
     >
-      Adquirir Plano
+      Adquirir Plano teste
     </Button>
   );
 };
-
 export default AcquirePlanButton;
