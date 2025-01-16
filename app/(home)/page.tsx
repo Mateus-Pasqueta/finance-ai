@@ -7,6 +7,7 @@ import { isMatch } from "date-fns";
 import TransactionPieChart from "./_components/transactions-pie-chart";
 import { getDashboard } from "../_data/get-dashboard";
 import ExpensesCategory from "./_components/expenses-per-category";
+import { canUserAddTransaction } from "../_data/can-user-add-transaction";
 import LastTransactions from "./_components/last-transactions";
 
 interface HomeProps {
@@ -26,6 +27,7 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
     redirect(`?month=${new Date().getMonth() + 1}`);
   }
   const Dashboard = await getDashboard(month);
+  const userCanAddTransaction = await canUserAddTransaction();
 
   return (
     <>
@@ -37,7 +39,11 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
         </div>
         <div className="grid grid-cols-[2fr,1fr] gap-6 overflow-hidden">
           <div className="flex flex-col gap-6 overflow-hidden">
-            <SummaryCards month={month} {...Dashboard} />
+            <SummaryCards
+              month={month}
+              {...Dashboard}
+              userCanAddTransaction={userCanAddTransaction}
+            />
             <div className="grid h-full grid-cols-3 grid-rows-1 gap-6 overflow-hidden">
               <TransactionPieChart {...Dashboard} />
               <ExpensesCategory
